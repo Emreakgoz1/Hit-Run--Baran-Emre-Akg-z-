@@ -10,7 +10,7 @@ public class Fire : MonoBehaviour
 
     [SerializeField] float Grenade_Forward_Force;
     [SerializeField] float Bullet_Forward_Force;
-
+ 
     private void Start()
     {
        
@@ -24,6 +24,7 @@ public class Fire : MonoBehaviour
        
             ÝnstantiateBullets(hit,1);
             ÝnstantiateGrenades(hit, 1);
+            
         }
        
     }
@@ -45,8 +46,6 @@ public class Fire : MonoBehaviour
                 Temporary_RigidBody.AddForce(0, 2, 0,ForceMode.Force);
                 Destroy(hit.transform.gameObject,0.5f);
             }
-            
-
         }
     }
     public void ÝnstantiateGrenades(RaycastHit hit, int destroy)
