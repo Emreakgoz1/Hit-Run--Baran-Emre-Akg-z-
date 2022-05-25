@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class FirstPersonController : MonoBehaviour
 {
-   
-    
-
-
     float xRotation;
     float yRotation;
     float lookSensivity =2f;
@@ -17,18 +13,12 @@ public class FirstPersonController : MonoBehaviour
     float yRotationV;
     float lookSmoothnes = 0.1f;
 
-
     CharacterController controller;
-
     void Start()
     {
-        
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
         controller = GetComponent<CharacterController>();
     }
 
-    
     void Update()
     {
             yRotation += Input.GetAxis("Mouse X") * lookSensivity;

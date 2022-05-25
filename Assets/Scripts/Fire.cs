@@ -11,14 +11,10 @@ public class Fire : MonoBehaviour
 
     [SerializeField] float Grenade_Forward_Force;
     [SerializeField] float Bullet_Forward_Force;
-    public Spawner sPawner;
+    
     int counter = 0;
 
- 
-    private void Start()
-    {
-       
-    }
+    public Spawner sPawner;
     void Update()
     {
         RaycastHit hit;
@@ -28,8 +24,6 @@ public class Fire : MonoBehaviour
        
             ÝnstantiateBullets(hit,1);
             ÝnstantiateGrenades(hit, 1);
-            
-
         }
         if (sPawner.numberOfRows*sPawner.objectsPerRows==sPawner.whitecubeCounter+counter)
         {
@@ -37,7 +31,6 @@ public class Fire : MonoBehaviour
             FindObjectOfType<FirstPersonController>().enabled=false;
             this.enabled = false;
         }
-       
     }
     public void ÝnstantiateBullets(RaycastHit hit,int destroy)
     {
@@ -51,19 +44,11 @@ public class Fire : MonoBehaviour
             Temporary_RigidBody.AddForce(transform.forward * Bullet_Forward_Force);
             Destroy(Temporary_Bullet_Handler, 5.0f);
             counter++;
-
             if (destroy==1)
             {
                 Temporary_RigidBody = hit.transform.gameObject.GetComponent<Rigidbody>();
                 Temporary_RigidBody.AddForce(0, 2, 0,ForceMode.Force);
                 Destroy(hit.transform.gameObject,0.5f);
-                foreach (Transform coloredCube in sPawner.Cubes)
-                {
-                    if (coloredCube.transform.tag=="Destroyable")
-                    {
-                       coloredCube.GetComponent<Renderer>().material.color = sPawner.WallColors[Random.Range(1, sPawner.WallColors.Count)];
-                    }
-                }
             }
             
         }
@@ -80,15 +65,12 @@ public class Fire : MonoBehaviour
             Temporary_RigidBody.AddForce(transform.forward * Grenade_Forward_Force);
             Destroy(Temporary_Bullet_Handler, 5.0f);
             counter++;
-
             if (destroy == 1)
             {
                 Temporary_RigidBody = hit.transform.gameObject.GetComponent<Rigidbody>();
                 Temporary_RigidBody.AddExplosionForce(1000,transform.position,5);
                 Destroy(hit.transform.gameObject, 0.5f);
             }
-
-
         }
     }
 

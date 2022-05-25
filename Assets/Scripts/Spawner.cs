@@ -11,11 +11,12 @@ public class Spawner : MonoBehaviour
 
     public int numberOfRows;
     public int objectsPerRows;
-    
-    Rigidbody Temporary_RigidBody;
-
     public int whitecubeCounter = 0;
     public float spacing;
+
+    Rigidbody Temporary_RigidBody;
+
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -32,11 +33,11 @@ public class Spawner : MonoBehaviour
         int[] colorsArray = new int[numberOfRows * objectsPerRows];
         int activeColor = 0;
         int i = 0;
+
         if (numberOfRows>3&&objectsPerRows>3)
         {
-            startPos.position = new Vector3((startPos.position.x + (numberOfRows * -0.5f)), startPos.position.y + (objectsPerRows*0.5f), startPos.position.z);
+            startPos.position = new Vector3((startPos.position.x + (numberOfRows * -0.2f)), startPos.position.y + (objectsPerRows*0.4f), startPos.position.z);
         }
-       
         for (int row = 0; row < numberOfRows; row++)
         {
             for (int column = 0; column < objectsPerRows; column++)
@@ -46,7 +47,6 @@ public class Spawner : MonoBehaviour
 
                 if (i > 1)
                 {
-
                     if (colorsArray[i - 2] == 0 && colorsArray[i - 1] == 0)
                     {
                         activeColor = Random.Range(1, WallColors.Count);
@@ -75,9 +75,7 @@ public class Spawner : MonoBehaviour
                     Temporary_RigidBody = _Cubes.transform.gameObject.GetComponent<Rigidbody>();
                     Temporary_RigidBody.isKinematic = true;
                     whitecubeCounter++;
-                   
                 }
-               
                 i++;
             }
         }

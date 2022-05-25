@@ -148,7 +148,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 72330833}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.59, y: 1.182, z: -1.475}
+  m_LocalPosition: {x: -0.759, y: 1.182, z: -1.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -717,6 +717,6 @@ MonoBehaviour:
   Bullet_Emitter: {fileID: 73916225}
   Bullet: {fileID: 4072746208771034185, guid: 3e5b005702c0bd448ac0d5ec65159f21, type: 3}
   Grenade: {fileID: 1031127380399296364, guid: 0dcbe94b19119fd42be50bf9175e22c0, type: 3}
-  Grenade_Forward_Force: 1000
+  Grenade_Forward_Force: 2000
   Bullet_Forward_Force: 1000
   sPawner: {fileID: 72330835}
