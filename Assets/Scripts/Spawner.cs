@@ -10,9 +10,9 @@ public class Spawner : MonoBehaviour
     public GameObject[] coloredWalls;
     public int numberOfRows;
     public int objectsPerRows;
-     List<Color> WallColors = new List<Color>();
+    List<Color> WallColors = new List<Color>();
+    Rigidbody Temporary_RigidBody;
 
-    
     public float spacing;
     // Start is called before the first frame update
     void Start()
@@ -33,8 +33,7 @@ public class Spawner : MonoBehaviour
             {
                 Vector3 startingPos = new Vector3(startPos.position.x + column * spacing, startPos.position.y - row * spacing, startPos.position.z);
                 Transform _Cubes = Instantiate(Cubes, startingPos,Quaternion.identity);
-                   
-                    
+                     
                     if (i>1)
                     {
                         
@@ -61,7 +60,14 @@ public class Spawner : MonoBehaviour
                     {
                     _Cubes.tag = "Destroyable";
                     }
-                      i++;
+                    else
+                    {
+                    Temporary_RigidBody = _Cubes.transform.gameObject.GetComponent<Rigidbody>();
+                    Temporary_RigidBody.isKinematic = true;
+                    
+                    }
+                     i++;
+                
                 
                     
 
@@ -74,14 +80,6 @@ public class Spawner : MonoBehaviour
     }
 
 
-    //public void ColorWalls()
-    //{   
-      //  foreach (GameObject wall in coloredWalls)
-       // { //see all objects
-          //Assign random material to object
-         //7   wall.GetComponent<Renderer>().material = randomMaterials[Random.Range(0, randomMaterials.Length)];
-        //}
-   // }
     
 
 
