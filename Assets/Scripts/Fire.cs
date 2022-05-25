@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Fire : MonoBehaviour
 {
@@ -29,12 +30,10 @@ public class Fire : MonoBehaviour
             ÝnstantiateGrenades(hit, 1);
             
 
-
-
         }
         if (sPawner.numberOfRows*sPawner.objectsPerRows==sPawner.whitecubeCounter+counter)
         {
-            Debug.Log("Oyun bitti");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             FindObjectOfType<FirstPersonController>().enabled=false;
             this.enabled = false;
         }
@@ -58,8 +57,15 @@ public class Fire : MonoBehaviour
                 Temporary_RigidBody = hit.transform.gameObject.GetComponent<Rigidbody>();
                 Temporary_RigidBody.AddForce(0, 2, 0,ForceMode.Force);
                 Destroy(hit.transform.gameObject,0.5f);
-               
+                foreach (Transform coloredCube in sPawner.Cubes)
+                {
+                    if (coloredCube.transform.tag=="Destroyable")
+                    {
+                       coloredCube.GetComponent<Renderer>().material.color = sPawner.WallColors[Random.Range(1, sPawner.WallColors.Count)];
+                    }
+                }
             }
+            
         }
     }
     public void ÝnstantiateGrenades(RaycastHit hit, int destroy)

@@ -6,11 +6,12 @@ public class Spawner : MonoBehaviour
 {
     public Transform Cubes;
     public Transform startPos;
- 
-    public GameObject[] coloredWalls;
+
+    public List<Color> WallColors = new List<Color>();
+
     public int numberOfRows;
     public int objectsPerRows;
-    public List<Color> WallColors = new List<Color>();
+    
     Rigidbody Temporary_RigidBody;
 
     public int whitecubeCounter = 0;
@@ -31,6 +32,11 @@ public class Spawner : MonoBehaviour
         int[] colorsArray = new int[numberOfRows * objectsPerRows];
         int activeColor = 0;
         int i = 0;
+        if (numberOfRows>3&&objectsPerRows>3)
+        {
+            startPos.position = new Vector3((startPos.position.x + (numberOfRows * -0.5f)), startPos.position.y + (objectsPerRows*0.5f), startPos.position.z);
+        }
+       
         for (int row = 0; row < numberOfRows; row++)
         {
             for (int column = 0; column < objectsPerRows; column++)
@@ -71,11 +77,7 @@ public class Spawner : MonoBehaviour
                     whitecubeCounter++;
                    
                 }
-                if (numberOfRows>3 && objectsPerRows>3)
-                {
-                    startPos.position = new Vector3(-2, 8, 0);
-                }
-
+               
                 i++;
             }
         }
