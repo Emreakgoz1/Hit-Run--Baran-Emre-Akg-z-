@@ -169,10 +169,11 @@ MonoBehaviour:
   Cubes: {fileID: 1097706339672902690, guid: 4d9df2bbbe0b1de4db26c10c4ed30ed0, type: 3}
   startPos: {fileID: 72330834}
   coloredWalls: []
-  numberOfRows: 3
-  objectsPerRows: 3
+  numberOfRows: 4
+  objectsPerRows: 4
   WallColors: []
-  spacing: 0.55
+  whitecubeCounter: 0
+  spacing: 1
 --- !u!1 &73916225
 GameObject:
   m_ObjectHideFlags: 0
@@ -719,3 +720,4 @@ MonoBehaviour:
   Grenade: {fileID: 1031127380399296364, guid: 0dcbe94b19119fd42be50bf9175e22c0, type: 3}
   Grenade_Forward_Force: 1000
   Bullet_Forward_Force: 1000
+  sPawner: {fileID: 72330835}
